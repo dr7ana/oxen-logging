@@ -30,10 +30,10 @@ namespace {
             using namespace std::literals;
             auto elapsed = std::chrono::steady_clock::now() - started_at;
 
-            dest.append(fmt::format(
+            dest.append(fmt::format(fmt::runtime(
                     elapsed >= 1h     ? "+{0:d}h{1:02d}m{2:02d}.{3:03d}s"
                     : elapsed >= 1min ? "+{1:d}m{2:02d}.{3:03d}s"
-                                      : "+{2:d}.{3:03d}s",
+                                      : "+{2:d}.{3:03d}s"),
                     std::chrono::duration_cast<std::chrono::hours>(elapsed).count(),
                     (std::chrono::duration_cast<std::chrono::minutes>(elapsed) % 1h).count(),
                     (std::chrono::duration_cast<std::chrono::seconds>(elapsed) % 1min).count(),

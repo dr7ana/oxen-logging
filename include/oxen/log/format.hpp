@@ -58,7 +58,7 @@ namespace detail {
         /// as provided during construction (via the "..."_format user-defined function).
         template <typename... T>
         auto operator()(T&&... args) && {
-            return fmt::format(format, std::forward<T>(args)...);
+            return fmt::format(fmt::runtime(format), std::forward<T>(args)...);
         }
     };
 
